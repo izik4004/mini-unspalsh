@@ -111,8 +111,8 @@ onMounted(() => {
   padding: 50px;
   columns: 3;
   gap: 40px;
-max-width: 900px;
-margin: 0 auto;
+  max-width: 900px;
+  margin: 0 auto;
   @media (max-width: 1200px) {
     columns: 3;
   }
