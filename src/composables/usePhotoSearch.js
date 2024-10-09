@@ -1,8 +1,8 @@
 import { ref } from 'vue';
 import axios from 'axios';
 
-const UNSPLASH_ACCESS_KEY = 'QU7EIZ2DRHtK70O0pFls1SdDzpydC64hKpnKxosW3nQ'; // Replace with your actual Unsplash access key
-const UNSPLASH_API_URL = 'https://api.unsplash.com/search/photos';
+const apiKey = import.meta.env.VITE_UNSPLASH_API_KEY; // Replace with your actual Unsplash access key
+const apiUrl = import.meta.env.VITE_UNSPLASH_API_URL;
 
 export const usePhotoSearch = () => {
   const photos = ref([]);
@@ -14,11 +14,11 @@ export const usePhotoSearch = () => {
     isLoading.value = true;
     error.value = null;
     try {
-      const response = await axios.get(UNSPLASH_API_URL, {
+      const response = await axios.get(apiUrl, {
         params: {
           query,
           per_page: 20,
-          client_id: UNSPLASH_ACCESS_KEY,
+          client_id: apiKey,
         },
       });
 

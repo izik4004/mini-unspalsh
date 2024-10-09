@@ -9,9 +9,9 @@ import Modal from './components/Modal.vue';
 const searchQuery = ref('');
 const isModalVisible = ref(false);
 const selectedPhoto = ref(null);
-const isLoadingText = ref(false); // To show "Loading search query"
-const isCompletedText = ref(false); // To show "Completed search query"
-const isDefaultSearch = ref(false); // New state for default search
+const isLoadingText = ref(false); 
+const isCompletedText = ref(false); 
+const isDefaultSearch = ref(false); 
 
 const { photos, isLoading, error, loadedPhotos, fetchPhotos } = usePhotoSearch();
 
@@ -30,13 +30,13 @@ const markAsLoaded = (photoId) => {
 // Handle the search action triggered by the Enter key
 const handleSearch = () => {
   if (searchQuery.value.trim()) {
-    isLoadingText.value = true; // Start showing "Loading search query"
-    isCompletedText.value = false; // Hide completed message when starting a new search
+    isLoadingText.value = true; 
+    isCompletedText.value = false; 
     isDefaultSearch.value = searchQuery.value.toLowerCase() === 'african'; // Check if default search
     fetchPhotos(searchQuery.value); // Fetch the photos with the query
   } else {
-    isDefaultSearch.value = true; // It's the default search
-    fetchPhotos('african'); // Default to "african" if no query
+    isDefaultSearch.value = true; 
+    fetchPhotos('african'); 
   }
 };
 
@@ -46,15 +46,6 @@ watch(searchQuery, (newValue) => {
     handleSearch();
   }
 });
-
-// Debounce function for search input
-// let debounceTimeout;
-// const debounceFetchPhotos = (query) => {
-//   if (debounceTimeout) clearTimeout(debounceTimeout);
-//   debounceTimeout = setTimeout(() => {
-//     fetchPhotos(query);
-//   }, 500); // 500ms delay
-// };
 
 // Watch for search query changes and fetch photos
 watch(searchQuery, (newValue) => {
